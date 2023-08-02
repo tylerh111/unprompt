@@ -1,0 +1,161 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unprompt"
+description = "User iNquiry Prompt"
+authors = [
+    {name = "Tyler Hughes", email = "tylerh.code@gmail.com"},
+]
+readme = "README.md"
+license = {file = "LICENSE.md"}
+requires-python = ">=3.8"
+keywords = [
+    "unprompt",
+    "prompt",
+    "ask",
+    "question",
+    "answer",
+]
+classifiers = [
+    'Development Status :: 1 - Planning',
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+    'Typing :: Typed',
+]
+dependencies = [
+    "click",
+]
+dynamic = [
+    "version",
+]
+
+[project.urls]
+source        = "https://github.com/tylerh111/unprompt"
+issues        = "https://github.com/tylerh111/unprompt/issues"
+documentation = "https://unprompt.readthedocs.io"
+changelog     = "https://unprompt.readthedocs.io/releases"
+
+[project.scripts]
+unprompt = "unprompt.__main__:main"
+
+[tool.black]
+line-length = 80
+target-version = [
+    "py38",
+]
+
+[tool.bumpver]
+current_version = "0.0"
+version_pattern = "MAJOR.MINOR[.PATCH]"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'fallback_version = "{version}"',
+]
+"README.md" = [
+    'version-{version}',
+]
+"src/unprompt/__init__.py" = [
+    '__version__ = "{version}"',
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_also = [
+    "def __repr__",
+    "if self\\.debug",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__:",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.isort]
+profile = "black"
+skip = [
+    "build",
+    "*_cache",
+    ".dev",
+    ".nox",
+    ".venv",
+    ".scratch",
+    ".trunk",
+    "data",
+]
+
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+warn_unused_ignores = true
+no_implicit_optional = true
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = "src"
+
+[tool.ruff]
+extend-exclude = [
+    "build",
+    "*_cache",
+    ".bak",
+    ".dev",
+    ".nox",
+    ".venv*",
+    ".scratch",
+    ".trunk",
+    "data",
+]
+ignore = [
+    "B019",
+    "B020",
+    "B904", # ruff enables opinionated warnings by default
+    "B905", # ruff enables opinionated warnings by default
+    "G202",
+]
+line-length = 88
+extend-select = [
+    "B",
+    "E",
+    "F",
+    "W",
+    "G",
+    "I",
+]
+
+[tool.ruff.per-file-ignores]
+"noxfile.py" = ["G"]
+"tests/*" = ["B011"]
+"**/__init__.py" = ["I001", "F401"]
+
+[tool.ruff.isort]
+# known-first-party = ["unprompt"] # make "first party" for docs and tests directories
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+write_to = "src/unprompt/_version.py"
+fallback_version = "0.0"
