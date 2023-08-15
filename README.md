@@ -1,6 +1,6 @@
 # Unprompt
 
-[![Version](https://img.shields.io/badge/version-0.0-blue)](https://github.com/tylerh111/unprompt)
+[![Version](https://img.shields.io/badge/version-0.1-blue)](https://github.com/tylerh111/unprompt)
 [![License](https://img.shields.io/badge/license-MIT-blueviolet)](https://github.com/tylerh111/unprompt/blob/main/LICENSE.md)
 
 > Simply ask the user

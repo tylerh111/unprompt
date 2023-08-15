@@ -58,7 +58,7 @@ target-version = [
 ]
 
 [tool.bumpver]
-current_version = "0.0"
+current_version = "0.1"
 version_pattern = "MAJOR.MINOR[.PATCH]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
@@ -158,4 +158,4 @@ extend-select = [
 [tool.setuptools_scm]
 version_scheme = "no-guess-dev"
 write_to = "src/unprompt/_version.py"
-fallback_version = "0.0"
+fallback_version = "0.1"
